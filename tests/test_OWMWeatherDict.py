@@ -85,12 +85,6 @@ def test_snow(weatherdict):
                       float) or isinstance(weatherdict.snow, type(None))
 
 
-def test_wind(weatherdict):
-    """Is the wind a dict."""
-    assert isinstance(weatherdict['wind'], dict)
-    assert isinstance(weatherdict.wind, dict)
-
-
 def test_humidity(weatherdict):
     """Test the pressure."""
     assert isinstance(weatherdict['humidity'], int)
