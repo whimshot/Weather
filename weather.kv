@@ -7,9 +7,9 @@
     text_size: self.size
     valign: 'middle'
 
-<TodayTitle>:
+<BoxTitle>:
     size_hint: (1, 0.1)
-    color: [0, 1, 0, 1]
+    color: [1, 0, 0.5, 1]
 
 <TodayLabel>:
     halign: 'center'
@@ -18,46 +18,46 @@
 <TodayHeader>:
     halign: 'center'
     size_hint: (0.5, 0.5)
-    color: [0, 1, 1, 1]
+    color: [0, 1, 0.5, 1]
 
 <TodayGrid>:
     cols: 2
-    spacing: [16, 0]
 
 <TodayBox>:
     orientation: 'vertical'
-    size_hint: (0.5, 1.0)
-    padding: [8]
+    size_hint: (0.45, 1.0)
+    padding: [4]
 
 <ForecastTitle>:
     size_hint: (1, 0.1)
-    color: [0, 1, 0, 1]
+    color: [1, 0, 1, 1]
 
 <ForecastDay>:
     halign: 'right'
-    size_hint: (0.25, 0.5)
+    size_hint: (0.45, 0.5)
 
 <ForecastNumeric>
     halign: 'center'
-    size_hint: (0.125, 0.5)
+    size_hint: (0.25, 0.5)
 
 <ForecastHeader>:
     halign: 'center'
     size_hint: (0.1, 0.5)
-    color: [0, 1, 1, 1]
+    color: [0, 1, 0.5, 1]
 
 <ForecastStatus>:
-    halign: 'center'
-    size_hint: (0.25, 0.5)
+    halign: 'left'
+    size_hint: (0.5, 0.5)
 
+<StatusHeader>:
+    color: [0, 1, 0.5, 1]
 
 <ForecastGrid>:
     cols: 6
-    spacing: [8, 0]
+    spacing: [24, 0]
 
 <ForecastBox>:
     orientation: 'vertical'
-    padding: [8]
+    padding: [4]
 
 <WeatherBox>:
-    padding: [4]

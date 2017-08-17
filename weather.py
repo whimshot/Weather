@@ -31,7 +31,8 @@ class OWMWeatherDict(dict):
     @temp_high.getter
     def temp_high(self):
         if 'temp' in self['temperature']:
-            _temp = float(format(self['temperature']['temp_max'] - 273.15, '.2f'))
+            _temp = float(format(self['temperature']
+                                 ['temp_max'] - 273.15, '.2f'))
         elif 'day' in self['temperature']:
             _temp = float(format(self['temperature']['max'] - 273.15, '.2f'))
         return _temp
@@ -43,7 +44,8 @@ class OWMWeatherDict(dict):
     @temp_low.getter
     def temp_low(self):
         if 'temp' in self['temperature']:
-            _temp = float(format(self['temperature']['temp_min'] - 273.15, '.2f'))
+            _temp = float(format(self['temperature']
+                                 ['temp_min'] - 273.15, '.2f'))
         elif 'day' in self['temperature']:
             _temp = float(format(self['temperature']['min'] - 273.15, '.2f'))
         return _temp
