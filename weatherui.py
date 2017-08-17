@@ -78,7 +78,7 @@ class TodayHeader(WeatherLabel):
 
 
 class TodayGrid(GridLayout):
-    """docstring for WeatherBox."""
+    """docstring for TodayGrid."""
 
     def __init__(self, **kwargs):
         """Setup that weatherbox."""
@@ -129,6 +129,15 @@ class TodayGrid(GridLayout):
             _sunset_widget = TodayLabel(text=_sunset.strftime('%I:%M:%S %p'))
             self.add_widget(_sunset_widget)
             self.widgets['sunset_time'] = _sunset_widget
+            weather.logger.info('Today: %s %s %s %s %s %s %s %s %s',
+                                wd.reference_time,
+                                wd.detailed_status, wd.status_icon_url,
+                                str(wd.temp_high),
+                                str(wd.temp_low),
+                                str(wd.temperature),
+                                str(wd.humidity),
+                                _sunrise.strftime('%I:%M:%S %p'),
+                                _sunset.strftime('%I:%M:%S %p'))
             Clock.schedule_interval(self.update, 300)
         except Exception as e:
             raise
@@ -153,6 +162,15 @@ class TodayGrid(GridLayout):
             _sunset = datetime.datetime.fromtimestamp(wd.sunset_time)
             self.widgets['sunset_time'].text = _sunset.strftime(
                 '%I:%M:%S %p')
+            weather.logger.info('Today Updated: %s %s %s %s %s %s %s %s %s',
+                                wd.reference_time,
+                                wd.detailed_status, wd.status_icon_url,
+                                str(wd.temp_high),
+                                str(wd.temp_low),
+                                str(wd.temperature),
+                                str(wd.humidity),
+                                _sunrise.strftime('%I:%M:%S %p'),
+                                _sunset.strftime('%I:%M:%S %p'))
         except Exception as e:
             raise
         finally:
@@ -291,6 +309,13 @@ class ForecastGrid(GridLayout):
                 self.add_widget(_detailed_status)
                 _row['detailed_status'] = _detailed_status
                 self.grid.append(_row)
+                weather.logger.info('Forecast: %s %s %s %s %s %s %s',
+                                    wd.reference_time,
+                                    _date.strftime('%A'), wd.status_icon_url,
+                                    str(wd.temp_high),
+                                    str(wd.temp_low),
+                                    str(wd.pressure),
+                                    wd.detailed_status)
             Clock.schedule_interval(self.update, 3600)
         except Exception as e:
             raise
@@ -311,6 +336,13 @@ class ForecastGrid(GridLayout):
                 row['temp_low'].text = str(wd.temp_low) + deg_cel
                 row['pressure'].text = str(wd.pressure) + '%'
                 row['detailed_status'].text = wd.detailed_status
+                weather.logger.info('Forecast: %s %s %s %s %s %s %s',
+                                    wd.reference_time,
+                                    _date.strftime('%A'), wd.status_icon_url,
+                                    str(wd.temp_high),
+                                    str(wd.temp_low),
+                                    str(wd.pressure),
+                                    wd.detailed_status)
         except Exception as e:
             raise
         finally:
