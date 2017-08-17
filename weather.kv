@@ -1,23 +1,24 @@
 #:kivy 1.10.0
 
 <AsyncImage>:
-    size_hint: [0.25, 0.5]
+    size_hint: [0.125, 0.5]
+
+<WeatherLabel>:
+    text_size: self.size
+    valign: 'middle'
 
 <TodayTitle>:
     size_hint: (1, 0.1)
     color: [0, 1, 0, 1]
 
 <TodayLabel>:
-    text_size: self.size
     halign: 'center'
-    valign: 'middle'
-    size_hint: (0.25, 0.5)
+    size_hint: (0.5, 0.5)
 
 <TodayHeader>:
-    text_size: self.size
     halign: 'center'
-    valign: 'middle'
     size_hint: (0.5, 0.5)
+    color: [0, 1, 1, 1]
 
 <TodayGrid>:
     cols: 2
@@ -26,5 +27,37 @@
 <TodayBox>:
     orientation: 'vertical'
     size_hint: (0.5, 1.0)
+    padding: [8]
+
+<ForecastTitle>:
+    size_hint: (1, 0.1)
+    color: [0, 1, 0, 1]
+
+<ForecastDay>:
+    halign: 'right'
+    size_hint: (0.25, 0.5)
+
+<ForecastNumeric>
+    halign: 'center'
+    size_hint: (0.125, 0.5)
+
+<ForecastHeader>:
+    halign: 'center'
+    size_hint: (0.1, 0.5)
+    color: [0, 1, 1, 1]
+
+<ForecastStatus>:
+    halign: 'center'
+    size_hint: (0.25, 0.5)
+
+
+<ForecastGrid>:
+    cols: 6
+    spacing: [8, 0]
+
+<ForecastBox>:
+    orientation: 'vertical'
+    padding: [8]
 
 <WeatherBox>:
+    padding: [4]

@@ -89,7 +89,7 @@ class TodayGrid(GridLayout):
             self.to_zone = tz.tzlocal()
             w = weather.Weather()
             wd = w.today
-            _status = TodayHeader(text=wd.detailed_status)
+            _status = TodayLabel(text=wd.detailed_status)
             self.add_widget(_status)
             _icon = AsyncImage(source=wd.status_icon_url)
             self.add_widget(_icon)
@@ -141,17 +141,108 @@ class TodayBox(BoxLayout):
             pass
 
 
+class ForecastNumeric(WeatherLabel):
+    """docstring for TodayLabel."""
+
+    def __init__(self, **kwargs):
+        """Setup that weatherbox."""
+        super().__init__(**kwargs)
+        try:
+            pass
+        except Exception as e:
+            raise
+        finally:
+            pass
+
+
+class ForecastDay(WeatherLabel):
+    """docstring for TodayLabel."""
+
+    def __init__(self, **kwargs):
+        """Setup that weatherbox."""
+        super().__init__(**kwargs)
+        try:
+            pass
+        except Exception as e:
+            raise
+        finally:
+            pass
+
+
+class ForecastHeader(WeatherLabel):
+    """docstring for TodayHeader."""
+
+    def __init__(self, **kwargs):
+        """Setup that weatherbox."""
+        super().__init__(**kwargs)
+        try:
+            pass
+        except Exception as e:
+            raise
+        finally:
+            pass
+
+
+class ForecastStatus(WeatherLabel):
+    """docstring for TodayHeader."""
+
+    def __init__(self, **kwargs):
+        """Setup that weatherbox."""
+        super().__init__(**kwargs)
+        try:
+            pass
+        except Exception as e:
+            raise
+        finally:
+            pass
+
+
+class ForecastGrid(GridLayout):
+    """docstring for TodayHeader."""
+
+    def __init__(self, **kwargs):
+        """Setup that weatherbox."""
+        super().__init__(**kwargs)
+        try:
+            self.add_widget(ForecastHeader(text=''))
+            self.add_widget(ForecastHeader(text=''))
+            self.add_widget(ForecastHeader(text='High'))
+            self.add_widget(ForecastHeader(text='Low'))
+            self.add_widget(ForecastHeader(text='Pressure'))
+            self.add_widget(ForecastHeader(text='Forecast'))
+            w = weather.Weather()
+            for wd in w.forecasts:
+                _date = datetime.datetime.fromtimestamp(wd.reference_time)
+                _day = ForecastDay(text=_date.strftime('%A'))
+                self.add_widget(_day)
+                _icon = AsyncImage(source=wd.status_icon_url)
+                self.add_widget(_icon)
+                _high_temp = ForecastNumeric(text=str(wd.temp_high) + deg_cel)
+                self.add_widget(_high_temp)
+                _low_temp = ForecastNumeric(text=str(wd.temp_low) + deg_cel)
+                self.add_widget(_low_temp)
+                _pressure = ForecastNumeric(text=str(wd.pressure))
+                self.add_widget(_pressure)
+                _status = ForecastStatus(text=wd.detailed_status)
+                self.add_widget(_status)
+        except Exception as e:
+            raise
+        finally:
+            pass
+
+
 class ForecastBox(BoxLayout):
     """docstring for WeatherBox."""
 
     def __init__(self, **kwargs):
         """Setup that weatherbox."""
         super().__init__(**kwargs)
-        tl = TodayTitle()
-        tl.text = "Weekly Forecast"
-        self.add_widget(tl)
         try:
-            pass
+            tl = TodayTitle()
+            tl.text = "Weekly Forecast"
+            self.add_widget(tl)
+            fg = ForecastGrid()
+            self.add_widget(fg)
         except Exception as e:
             raise
         finally:

@@ -18,7 +18,10 @@ class OWMWeatherDict(dict):
 
     @temperature.getter
     def temperature(self):
-        _temp = float(format(self['temperature']['temp'] - 273.15, '.2f'))
+        if 'temp' in self['temperature']:
+            _temp = float(format(self['temperature']['temp'] - 273.15, '.2f'))
+        elif 'day' in self['temperature']:
+            _temp = float(format(self['temperature']['day'] - 273.15, '.2f'))
         return _temp
 
     @property
@@ -27,7 +30,10 @@ class OWMWeatherDict(dict):
 
     @temp_high.getter
     def temp_high(self):
-        _temp = float(format(self['temperature']['temp_max'] - 273.15, '.2f'))
+        if 'temp' in self['temperature']:
+            _temp = float(format(self['temperature']['temp_max'] - 273.15, '.2f'))
+        elif 'day' in self['temperature']:
+            _temp = float(format(self['temperature']['max'] - 273.15, '.2f'))
         return _temp
 
     @property
@@ -36,7 +42,10 @@ class OWMWeatherDict(dict):
 
     @temp_low.getter
     def temp_low(self):
-        _temp = float(format(self['temperature']['temp_min'] - 273.15, '.2f'))
+        if 'temp' in self['temperature']:
+            _temp = float(format(self['temperature']['temp_min'] - 273.15, '.2f'))
+        elif 'day' in self['temperature']:
+            _temp = float(format(self['temperature']['min'] - 273.15, '.2f'))
         return _temp
 
     @property
@@ -53,7 +62,10 @@ class OWMWeatherDict(dict):
 
     @sunset_time.getter
     def sunset_time(self):
-        return self['sunset_time']
+        if self['sunset_time'] == 0:
+            return None
+        else:
+            return self['sunset_time']
 
     @property
     def sunrise_time(self):
