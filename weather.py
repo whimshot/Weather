@@ -134,7 +134,8 @@ class OWMWeatherDict(dict):
     @rain.getter
     def rain(self):
         if any(self['rain']):
-            _rain = float(self['rain']['3h'])
+            for i in self['rain']:
+                _rain = float(self['rain'][i])
             return _rain
         else:
             return None

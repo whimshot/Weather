@@ -329,12 +329,12 @@ class ForecastGrid(GridLayout):
             for wd, row in zip(_forecasts, self.grid):
                 _date = datetime.datetime.fromtimestamp(wd.reference_time)
                 _day = ForecastDay(text=_date.strftime('%A'))
-                row['reference_time'].text = _day
+                row['reference_time'].text = _date.strftime('%A')
                 row['status_icon_url'].source = wd.status_icon_url
                 row['status_icon_url'].reload()
                 row['temp_high'].text = str(wd.temp_high) + deg_cel
                 row['temp_low'].text = str(wd.temp_low) + deg_cel
-                row['pressure'].text = str(wd.pressure) + '%'
+                row['pressure'].text = str(wd.pressure)
                 row['detailed_status'].text = wd.detailed_status
                 weather.logger.info('Forecast: %s %s %s %s %s %s %s',
                                     wd.reference_time,
