@@ -21,7 +21,7 @@ Window.size = (800, 480)
 deg_cel = u' \N{DEGREE SIGN}C'
 
 
-class BoxTitle(Label):
+class WeatherBoxTitle(Label):
     """docstring for WeatherBox."""
 
     def __init__(self, **kwargs):
@@ -183,7 +183,7 @@ class TodayBox(BoxLayout):
     def __init__(self, **kwargs):
         """Setup that weatherbox."""
         super().__init__(**kwargs)
-        self.bt = BoxTitle()
+        self.bt = WeatherBoxTitle()
         self.bt.text = "Today's Weather"
         self.add_widget(self.bt)
         self.tg = TodayGrid()
@@ -356,7 +356,7 @@ class ForecastBox(BoxLayout):
         """Setup that weatherbox."""
         super().__init__(**kwargs)
         try:
-            self.bt = BoxTitle()
+            self.bt = WeatherBoxTitle()
             self.bt.text = "Weekly Forecast"
             self.add_widget(self.bt)
             self.fg = ForecastGrid()
